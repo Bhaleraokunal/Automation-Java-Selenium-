@@ -29,24 +29,19 @@ public class ScriptFroDWSHomePage {
 			
 			for (WebElement webElement : socialLinks) {
 				
-				Thread.sleep(2000) ;
-				
-				String act_Url1 = driver.getCurrentUrl();
-				
-				if (act_Url1.equals(exp_Url)) {
+				if (!driver.getCurrentUrl().equals(exp_Url)) {
 					
 					Thread.sleep(2000) ;
-					
-					webElement.click() ;
-				}
-				else {
 					driver.navigate().back() ;
-				}
+				} 
+				
+				webElement.click() ;
+				Thread.sleep(2000) ;
 			}
 			
 		} else {
 			System.out.println("I am not in DWS home page and the testCase is fail");
 		}
-		
+		driver.quit() ;
 	}
 }
