@@ -23,7 +23,7 @@ public static void main(String[] args) throws InterruptedException {
 		Thread.sleep(2000) ;
 		WebElement dragAndDrop = driver.findElement(By.xpath("//li[@class='no-use relative hover:bg-orange-50']")) ;
 		dragAndDrop.click() ;
-		Thread.sleep(2000) ;
+		Thread.sleep(4000) ;
 		
 		driver.findElement(By.xpath("//a[text()='Drag Position']")).click() ;
 		Thread.sleep(1500);
@@ -34,6 +34,16 @@ public static void main(String[] args) throws InterruptedException {
 		WebElement mobileAccessories = driver.findElement(By.xpath("//div[@class='drop-column  min-h-[200px] bg-slate-100']")) ;
 		WebElement laptopAccessories = driver.findElement(By.xpath("//div[@class='drop-column min-h-[200px] bg-slate-100']")) ;
 		
-		act.keyDown(Keys.CONTROL,mobileCharger).clickAndHold() ;
+//		act.click(mobileCharger);
+//		Thread.sleep(500) ;
+//		act.clickAndHold(mobileCover) ;
+//		Thread.sleep(500) ;
+//		act.release(mobileAccessories).perform() ;
+		
+		act.keyDown(Keys.CONTROL).click(mobileCharger).click(mobileCover).keyUp(Keys.CONTROL).clickAndHold(mobileCover).moveToElement(mobileAccessories).release().perform();
+	
+		
+		Thread.sleep(5000) ;
+		driver.quit() ;
 	}
 }
